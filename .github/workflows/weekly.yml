@@ -13,7 +13,7 @@ jobs:
     env:
       MESSAGE_PAYLOAD_FILE: /tmp/message
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
         with:
             # fetch full history
             fetch-depth: 0
