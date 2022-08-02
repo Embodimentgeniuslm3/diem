@@ -1,4 +1,4 @@
-FROM debian:buster-20210621@sha256:33a8231b1ec668c044b583971eea94fff37151de3a1d5a3737b08665300c8a0b AS toolchain
+FROM debian:buster-20220801@sha256:fb9654aac57319592f1d51497c62001e7033eddf059355408a0b53f7c71f8d5f AS toolchain
 
 # To use http/https proxy while building, use:
 # docker build --build-arg https_proxy=http://fwdproxy:8080 --build-arg http_proxy=http://fwdproxy:8080
@@ -20,7 +20,7 @@ COPY . /diem
 RUN IMAGE_TARGETS="release" ./docker/build-common.sh
 
 ### Production Image ###
-FROM debian:buster-20210621@sha256:33a8231b1ec668c044b583971eea94fff37151de3a1d5a3737b08665300c8a0b AS prod
+FROM debian:buster-20220801@sha256:fb9654aac57319592f1d51497c62001e7033eddf059355408a0b53f7c71f8d5f AS prod
 
 RUN echo "deb http://deb.debian.org/debian bullseye main" > /etc/apt/sources.list.d/bullseye.list && \
     echo "Package: *\nPin: release n=bullseye\nPin-Priority: 50" > /etc/apt/preferences.d/bullseye
